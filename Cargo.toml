@@ -1,0 +1,24 @@
+[package]
+name = "blues"
+version = "0.1.0"
+edition = "2021"
+license = "0BSD"
+repository = "https://github.com/SludgePhD/Blues"
+description = "Rust bindings to BlueZ (via zbus)"
+categories = ["api-bindings", "os::linux-apis", "asynchronous"]
+keywords = ["dbus", "bluetooth", "gatt", "ble"]
+
+[dependencies]
+zbus = { version = "3.14.1", default-features = false }
+log = "0.4.19"
+futures-util = "0.3.28"
+
+[dev-dependencies]
+pollster = { version = "0.3.0", features = ["macro"] }
+env_logger = "0.10.0"
+bitflags = "2.3.3"
+
+[features]
+# These feature flags just forward to `zbus`.
+default = ["zbus/async-io"]
+tokio = ["zbus/tokio"]
